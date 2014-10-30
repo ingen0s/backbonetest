@@ -1,4 +1,4 @@
-# Complete Guide to Node Authentication with MySQL
+# Backbone Test thanks to scotch.io
 
 Code for the entire scotch.io tutorial series: Complete Guide to Node Authentication with MongoDB
 
