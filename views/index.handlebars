@@ -1,0 +1,20 @@
+
+    <div class="container">
+        <div class="jumbotron text-center">
+         <!-- show any messages that come back with authentication -->
+         
+           {{#if message.length}}
+                <div class="alert alert-danger">{{message}}</div>
+           {{/if}}
+          
+            <h1><span class="fa fa-lock"></span>BookMarklee</h1>
+
+            <p>Login or Register with:</p>
+
+            <a href="/login" class="btn btn-default"><span class="fa fa-user"></span> Login</a>
+            <a href="/signup" class="btn btn-default"><span class="fa fa-user"></span> Signup</a>
+        </div>
+    </div>
+
+
+	

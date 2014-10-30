@@ -26,7 +26,7 @@ module.exports = function(passport) {
 
     // used to deserialize the user
     passport.deserializeUser(function(id, done) {
-        connection.query("select * from users where id = "+ id, function(err, rows){
+        connection.query("select * from userinfo where id = "+ id, function(err, rows){
             done(err, rows[0]);
         });
     });
@@ -48,7 +48,7 @@ module.exports = function(passport) {
         function(req, username, password, done) {
             // find a user whose email is the same as the forms email
             // we are checking to see if the user trying to login already exists
-            connection.query("select * from users where username = '" + username + "'", function(err, rows) {
+            connection.query("select * from userinfo where username = '" + username + "'", function(err, rows) {
                 if (err)
                     return done(err);
                 if (rows.length) {
@@ -61,7 +61,7 @@ module.exports = function(passport) {
                         password: bcrypt.hashSync(password, null, null)  // use the generateHash function in our user model
                     };
 
-                    var insertQuery = "INSERT INTO users ( username, password ) values ('" + newUserMysql.username + "','" + newUserMysql.password + "')";
+                    var insertQuery = "INSERT INTO userinfo ( username, email, password, created_at, last_login ) values ('" + newUserMysql.username + "',NULL,'" + newUserMysql.password + "', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)";
 
                     connection.query(insertQuery,function(err, rows) {
                         newUserMysql.id = rows.insertId;
@@ -88,7 +88,7 @@ module.exports = function(passport) {
             passReqToCallback : true // allows us to pass back the entire request to the callback
         },
         function(req, username, password, done) { // callback with email and password from our form
-            connection.query("select * from users where username = '" + username + "'",function(err, rows){
+            connection.query("select * from userinfo where username = '" + username + "'",function(err, rows){
                 if (err)
                     return done(err);
                 if (!rows.length) {

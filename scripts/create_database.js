@@ -11,12 +11,15 @@ connection.query('CREATE DATABASE ' + dbconfig.database);
 
 connection.query('\
 CREATE TABLE `' + dbconfig.database + '`.`' + dbconfig.users_table + '` ( \
-    `id` INT UNSIGNED NOT NULL AUTO_INCREMENT, \
-    `username` VARCHAR(20) NOT NULL, \
-    `password` CHAR(60) NOT NULL, \
-        PRIMARY KEY (`id`), \
-    UNIQUE INDEX `id_UNIQUE` (`id` ASC), \
-    UNIQUE INDEX `username_UNIQUE` (`username` ASC) \
+  `id` int(11) NOT NULL AUTO_INCREMENT,\
+  `username` varchar(255) DEFAULT NULL,\
+  `password` varchar(255) DEFAULT NULL,\
+  `email` varchar(255) DEFAULT NULL,\
+  `created_at` datetime DEFAULT NULL,\
+  `last_login` datetime DEFAULT NULL,\
+  PRIMARY KEY (`id`),\
+  UNIQUE KEY `username` (`username`),\
+  UNIQUE KEY `email` (`email`)\
 )');
 
 console.log('Success: Database Created!')

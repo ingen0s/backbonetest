@@ -1,4 +1,4 @@
-// config/database.js
+// config/tags_database.js
 module.exports = {
     'connection': {
         'host': 'localhost',
@@ -7,5 +7,5 @@ module.exports = {
         'password': ''
     },
 	'database': 'taskplosion',
-    'users_table': 'userinfo'
+    'users_table': 'tags'
 };
