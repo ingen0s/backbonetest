@@ -67,14 +67,14 @@ module.exports = function(app, passport) {
 	
 	
 	//Bookmarks route
-		app.get('/bookmarks',function(req, res) {
+		app.get('/bookmarks', isLoggedIn,function(req, res) {
 		res.render('bookmarks.handlebars', {
 			//user : req.user // get the user out of session and pass to template
 		});
 	});
 	
 		//Add Bookmarks route
-		app.get('/addbookmarks',function(req, res) {
+		app.get('/addbookmarks', isLoggedIn,function(req, res) {
 		res.render('addbookmarks.handlebars', {
 			//user : req.user // get the user out of session and pass to template
 		});
