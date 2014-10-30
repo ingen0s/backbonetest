@@ -15,9 +15,9 @@ var hbs = require('express-handlebars');
 //bookmarks DB
 
 connectionpool = mysql.createPool({
-        host     : 'localhost',
-        user     : 'admin',
-        password : '',
+        host     : '23.229.203.134',
+        user     : 'abcdefg',
+        password : '11111',
         database : 'taskplosion'
    });
    
